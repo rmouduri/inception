@@ -1,12 +1,12 @@
 <?php
 
-define( 'DB_NAME', 'waiting_database' );
+define( 'DB_NAME', 'tobereplaced_database' );
 
-define( 'DB_USER', 'waiting_username' );
+define( 'DB_USER', 'tobereplaced_username' );
 
-define( 'DB_PASSWORD', 'waiting_password' );
+define( 'DB_PASSWORD', 'tobereplaced_password' );
 
-define( 'DB_HOST', 'waiting_hostname' );
+define( 'DB_HOST', 'tobereplaced_hostname' );
 
 define( 'DB_CHARSET', 'utf8' );
 
