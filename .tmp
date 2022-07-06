@@ -1,0 +1,11 @@
+sudo apt update -y
+sudo apt upgrade -y
+suod apt-get install docker
+sudo apt-get install docker-compose
+sudo apt-get install mariadb-server
+sudo usermod -aG docker rmouduri
+sudo echo "127.0.0.1  rmouduri.42.fr" >> /etc/hosts
+
+echo "INSTALLER VSCODE"
+echo "Si bug, sudo systemctl start docker"
+echo "Correc cmd: docker stop $(docker ps -qa); docker rm $(docker ps -qa); docker rmi -f $(docker images -qa); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null"
