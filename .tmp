@@ -4,6 +4,7 @@ sudo apt-get install -y docker
 sudo apt-get install -y docker-compose
 sudo apt-get install -y mariadb-server
 sudo usermod -aG docker rmouduri
+sudo chmod 777 /etc/hosts
 sudo echo "127.0.0.1  rmouduri.42.fr" >> /etc/hosts
 
 echo "INSTALLER VSCODE"
