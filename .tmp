@@ -1,8 +1,8 @@
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt-get install docker
-sudo apt-get install docker-compose
-sudo apt-get install mariadb-server
+sudo apt-get install -y docker
+sudo apt-get install -y docker-compose
+sudo apt-get install -y mariadb-server
 sudo usermod -aG docker rmouduri
 sudo echo "127.0.0.1  rmouduri.42.fr" >> /etc/hosts
 
