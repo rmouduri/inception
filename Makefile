@@ -1,12 +1,12 @@
 all: up
 
 up:
-	@cd srcs/
+	@cp srcs/.env .
 	@systemctl stop mysql.service
 	@sudo mkdir -p /home/rmouduri/data/wordpress
 	@sudo mkdir -p /home/rmouduri/data/mysql
 	@docker-compose -f ./srcs/docker-compose.yml up -d --build
-	@cd ../
+	@rm .env
 
 down:
 	@cp srcs/.env .
