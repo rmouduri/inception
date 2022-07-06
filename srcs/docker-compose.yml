@@ -14,8 +14,8 @@ services:
       - db:/var/lib/mysql
     networks:
       - inception
-    expose:
-      - "3306"
+    ports:
+      - "3306:3306"
     restart: always
 
   wordpress:
@@ -31,8 +31,8 @@ services:
       - mariadb
     networks:
       - inception
-    expose:
-      - "9000"
+    ports:
+      - "9000:9000"
     volumes:
       - wp:/var/www/html/wordpress
     restart: always
