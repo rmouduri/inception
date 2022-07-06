@@ -1,0 +1,70 @@
+version: '3.3'
+services:
+
+  mariadb:
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    container_name: mariadb
+    build: requirements/mariadb
+    image: mariadb
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - inception
+    ports:
+      - "3306:3306"
+    restart: always
+
+  wordpress:
+    environment: 
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_HOSTNAME=${MYSQL_HOSTNAME}
+    container_name: wordpress
+    build: requirements/wordpress
+    image: wordpress
+    depends_on: 
+      - mariadb
+    networks:
+      - inception
+    ports:
+      - "9000:9000"
+    volumes:
+      - wp:/var/www/html/wordpress
+    restart: always
+
+  nginx:
+    container_name: nginx
+    build: requirements/nginx
+    image: nginx
+    depends_on :
+      - wordpress
+    networks:
+      - inception
+    ports:
+      - "443:443"
+    volumes:
+      - wp:/var/www/html/wordpress
+    restart: always
+
+networks:
+  inception:
+
+volumes:
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rmouduri/data/mysql
+      o: bind
+  wp:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rmouduri/data/wordpress
+      o: bind
+
